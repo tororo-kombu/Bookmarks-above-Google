@@ -1,0 +1,180 @@
+/* ── Bar ── */
+#custom-bookmarks-bar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 2147483647;
+  background: var(--xhUGwc);
+  border-bottom: 1px solid #ffffff28;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  gap: 2px;
+  font-family: 'Google Sans', Roboto, Arial, sans-serif;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  user-select: none;
+  transform: translateY(-32px);
+}
+
+body {
+  transform: translateY(32px) !important;
+}
+
+/* ── バー上アイテム共通 ── */
+.cbbar-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0 5px;
+  height: 24px;
+  border-radius: 4px;
+  font-size: 12px;
+  color: var(--YLNNHc);
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background 0.2s;
+  position: relative;
+  cursor: pointer;
+}
+.cbbar-item:hover { background: #4e5e7750; }
+
+/* ── バー上フォルダ ── */
+.cbbar-bar-folder {
+  position: relative; /* メニューの基準点 */
+}
+
+.cbbar-bar-folder-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.12s;
+}
+
+/* ── アイコン ── */
+.cbbar-icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cbbar-icon img,
+.cbbar-icon svg { width: 14px; height: 14px; }
+.cbbar-icon img { object-fit: contain; border-radius: 2px; }
+
+.cbbar-label {
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--YLNNHc);
+}
+
+.cbbar-folder-chevron {
+  width: 8px; height: 8px;
+  margin-left: 1px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+.cbbar-folder-chevron svg { width: 8px; height: 8px; }
+
+/* ── ドロップダウン共通 ── */
+.cbbar-dropdown {
+  position: relative;
+  background: var(--xhUGwc);
+  border: 1px solid #ffffff28;
+  border-radius: 8px;
+  padding: 4px 0;
+  min-width: 200px;
+  max-width: 300px;
+  max-height: 80vh;
+  overflow: visible;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15), 0 1px 4px rgba(0,0,0,0.08);
+  font-family: 'Google Sans', Roboto, Arial, sans-serif;
+}
+.cbbar-dropdown::-webkit-scrollbar { width: 6px; }
+.cbbar-dropdown::-webkit-scrollbar-thumb { background: #dadce0; border-radius: 3px; }
+
+/* バー直下のメニュー: absolute で wrapper(cbbar-bar-folder) 基準 */
+.cbbar-bar-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 2147483646;
+  display: none;
+  margin-top: 2px;
+}
+.cbbar-bar-menu.open { display: block; }
+
+/* サブメニュー: absolute で .cbbar-dd-folder 基準 */
+.cbbar-submenu {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  z-index: 2147483645;
+  display: none;
+}
+.cbbar-submenu.open { display: block; }
+
+/* ── ドロップダウン内アイテム ── */
+.cbbar-dd-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  font-size: 13px;
+  color: var(--YLNNHc);
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  cursor: pointer;
+  transition: background 0.1s;
+}
+.cbbar-dd-item:hover { background: #4e5e7750; }
+
+/* ── ドロップダウン内フォルダ ── */
+.cbbar-dd-folder {
+  position: relative; /* サブメニューの基準点 */
+}
+
+.cbbar-dd-folder-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  font-size: 13px;
+  color: var(--YLNNHc);
+  cursor: pointer;
+  transition: background 0.1s;
+}
+.cbbar-dd-folder-row:hover { background: #4e5e7750; }
+
+/* フォルダ行内のアイコンはやや大きく */
+.cbbar-dd-item .cbbar-icon,
+.cbbar-dd-folder-row .cbbar-icon {
+  width: 16px; height: 16px;
+}
+.cbbar-dd-item .cbbar-icon img,
+.cbbar-dd-item .cbbar-icon svg,
+.cbbar-dd-folder-row .cbbar-icon img,
+.cbbar-dd-folder-row .cbbar-icon svg {
+  width: 16px; height: 16px;
+}
+
+.cbbar-item-text {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--YLNNHc);
+}
+
+/* フォルダ行の chevron は右端へ */
+.cbbar-dd-folder-row .cbbar-folder-chevron {
+  margin-left: auto;
+}

@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Bookmarks above Google",
+  "version": "1.0.0",
+  "description": "Displays browser bookmarks as a bar on Google.com",
+  "permissions": [
+    "bookmarks"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.google.com/","https://www.google.com/?*","https://www.google.com/webhp?*"],
+      "js": ["content.js"],
+      "css": ["bookmarks-bar.css"],
+      "run_at": "document_end"
+    }
+  ],
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}
