@@ -68,7 +68,7 @@
         const item = document.createElement('a');
         item.className = 'cbbar-dd-item';
         item.href = node.url;
-        item.target = '_blank';
+        item.target = '';
         item.rel = 'noopener noreferrer';
         item.appendChild(makeIcon(node));
         const label = document.createElement('span');
